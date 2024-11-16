@@ -7,18 +7,23 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.Catapult;
 
 public class RobotContainer {
   private Catapult catapult = new Catapult();
+  private CommandXboxController controller = new CommandXboxController(1);
 
   public RobotContainer() {
     configureBindings();
   }
 
-  private void configureBindings() {}
+  private void configureBindings() {
+    controller.a().whileTrue(getAutonomousCommand());
+  }
 
   public Command getAutonomousCommand() {
-    return Commands.print("No autonomous command configured");
+    // return Commands.print("No autonomous command configured");
+    return catapult.getShootCommand();
   }
 }
