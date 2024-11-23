@@ -20,6 +20,7 @@ public class RobotContainer {
 
   private void configureBindings() {
     controller.a().whileTrue(getAutonomousCommand());
+    controller.b().whileTrue(catapult.getAdjustCommand());
   }
 
   public Command getAutonomousCommand() {
